@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Aurora MySQL Log Archive
+
+Globals:
+  Function:
+    Runtime: python3.9
+    Timeout: 900
+    MemorySize: 1024
+
+Resources:
+  MySQLLogArchiveFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: aurora-mysql-log-archive
+      CodeUri: .
+      Handler: handler.main
+      Environment:
+        Variables:
+          S3_BUCKET: "aurora-log"
+          CLUSTERS: "cluster-1,cluster-2"
+
+      Role: arn:aws:iam::************:role/lambda-aurora-mysql-log-archive

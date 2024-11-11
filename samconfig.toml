@@ -1,0 +1,10 @@
+version = 0.1
+
+[global.parameters]
+stack_name = "aurora-mysql-log-archive"
+
+[deploy.parameters]
+confirm_changeset = true
+resolve_s3 = true
+s3_prefix = "aurora-mysql-log-archive"
+region = "ap-northeast-1"
